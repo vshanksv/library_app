@@ -24,10 +24,10 @@ RSpec.configure do |config|
       paths: {},
       servers: [
         {
-          url: 'https://{defaultHost}',
+          url: '{defaultHost}',
           variables: {
             defaultHost: {
-              default: 'www.example.com'
+              default: '/'  # This will be replaced by the swagger_filter
             }
           }
         }

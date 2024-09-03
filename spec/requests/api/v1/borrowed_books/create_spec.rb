@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe "Api::V1::BorrowedBooks", type: :request do
+RSpec.describe Api::V1::BorrowedBooksController, type: :request do
   describe "POST /api/v1/borrowed_books" do
     let(:admin_user) { create(:user, :admin) }
     let(:non_admin_user) { create(:user) }

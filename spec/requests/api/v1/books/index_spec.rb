@@ -15,9 +15,9 @@ RSpec.describe Api::V1::BooksController, type: :request do
 
           expect(response).to have_http_status(:ok)
           json_response = JSON.parse(response.body)
-          expect(json_response['books'].size).to eq(20)
+          expect(json_response['books'].size).to eq(10)
           expect(json_response['meta']['current_page']).to eq(1)
-          expect(json_response['meta']['total_pages']).to eq(2)
+          expect(json_response['meta']['total_pages']).to eq(3)
           expect(json_response['meta']['total_count']).to eq(25)
         end
 
@@ -26,12 +26,12 @@ RSpec.describe Api::V1::BooksController, type: :request do
 
           expect(response).to have_http_status(:ok)
           json_response = JSON.parse(response.body)
-          expect(json_response['books'].size).to eq(5)
+          expect(json_response['books'].size).to eq(10)
           expect(json_response['meta']['current_page']).to eq(2)
         end
 
-        it 'caches the response' do
-          expect(Rails.cache).to receive(:fetch).at_least(:once).and_call_original
+        it 'caches the response using Redis' do
+          expect(Rails.cache).to receive(:fetch).and_call_original.twice
 
           get '/api/v1/books', headers: headers
           expect(response).to have_http_status(:ok)

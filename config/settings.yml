@@ -1,0 +1,5 @@
+domain_url: 'http://localhost:3000'
+rswag:
+  protocol: 'http'
+  host: 'localhost'
+  port: '3000'

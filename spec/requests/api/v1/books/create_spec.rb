@@ -25,7 +25,7 @@ RSpec.describe Api::V1::BooksController, type: :request do
           post "/api/v1/books", params: invalid_params, headers: headers
         }.not_to change(Book, :count)
 
-        expect(response).to have_http_status(:unprocessable_entity)
+        expect(response).to have_http_status(422)
       end
     end
   end

@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe "Api::V1::Tokens", type: :request do
+RSpec.describe Api::V1::TokensController, type: :request do
   describe "POST /api/v1/tokens" do
     let(:valid_api_key) { "valid_api_key" }
     let(:invalid_api_key) { "invalid_api_key" }

@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe 'Api::V1::UsersController', type: :request do
+RSpec.describe Api::V1::UsersController, type: :request do
   let(:admin_user) { create(:user, :admin) }
   let(:non_admin_user) { create(:user) }
   let(:headers) { { 'Authorization' => "Bearer #{token}" } }

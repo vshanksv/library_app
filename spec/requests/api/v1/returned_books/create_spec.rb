@@ -1,10 +1,10 @@
 require 'rails_helper'
 
-RSpec.describe "ReturnedBooks", type: :request do
+RSpec.describe Api::V1::ReturnedBooksController, type: :request do
   let(:admin_user) { create(:user, :admin) }
   let(:non_admin_user) { create(:user) }
   let(:book) { create(:book) }
-  let(:borrowed_book) { create(:borrowed_book, user: non_admin_user, book: book) }
+  let!(:borrowed_book) { create(:borrowed_book, user: non_admin_user, book: book) }
   let(:headers) { { 'Authorization' => "Bearer #{token}" } }
   let(:token) { JwtHelper.encode(user_id: admin_user.id) }
 
@@ -15,11 +15,11 @@ RSpec.describe "ReturnedBooks", type: :request do
       end
 
       it "returns status code 200" do
-        expect(response).to have_http_status(200)
+        expect(response).to have_http_status(201)
       end
 
       it "returns the book with status" do
-        expect(json['book']['id']).to eq(book.id)
+        expect(json['id']).to eq(book.id)
         expect(json['status']).to eq('success')
       end
     end

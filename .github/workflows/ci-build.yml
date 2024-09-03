@@ -61,4 +61,5 @@ jobs:
         DATABASE_URL: postgres://postgres:postgres@localhost:5432/library_app_development
         TEST_DATABASE_URL: postgres://postgres:postgres@localhost:5432/library_app_test
         REDIS_URL: redis://localhost:6379/0
+        HMAC_SECRET=a912918fdee710323ea2820eb453f2ebfcad634b1a3fb442d46e8c5caae3f849b5db808873a27f74f33d46e93e00e4952e9934f29efc71d701fb1905602d9004
       run: bundle exec rspec

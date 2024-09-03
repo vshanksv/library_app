@@ -15,6 +15,7 @@ class CreateBookService
     if book.save
       success(book)
     else
+      Rails.logger.error(book.errors.full_messages.join(", "))
       failure(book.errors.full_messages.join(", "))
     end
   end

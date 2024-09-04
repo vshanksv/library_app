@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_08_29_144906) do
+ActiveRecord::Schema[7.1].define(version: 2024_09_04_121505) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -28,6 +28,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_08_29_144906) do
     t.integer "status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["book_id", "status", "user_id"], name: "index_borrowed_books_on_book_id_and_status_and_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -37,6 +38,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_08_29_144906) do
     t.string "api_key"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["api_key"], name: "index_users_on_api_key", unique: true, where: "(api_key IS NOT NULL)"
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 

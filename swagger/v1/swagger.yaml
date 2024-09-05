@@ -67,6 +67,12 @@ paths:
         - Books
       security:
         - BearerAuth: []
+      parameters:
+        - in: query
+          name: page
+          schema:
+            type: integer
+          description: Page number for pagination
       responses:
         '200':
           description: Successful response

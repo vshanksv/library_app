@@ -1,0 +1,4 @@
+rswag:
+  protocol: 'http'
+  host: '206.189.150.216'
+  port: '80'

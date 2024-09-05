@@ -42,7 +42,7 @@ Rails.application.configure do
   # config.assume_ssl = true
 
   # Force all access to the app over SSL, use Strict-Transport-Security, and use secure cookies.
-  config.force_ssl = true
+  config.force_ssl = false
 
   # Log to STDOUT by default
   config.logger = ActiveSupport::Logger.new(STDOUT)
@@ -60,7 +60,6 @@ Rails.application.configure do
   # Use a different cache store in production.
   config.cache_store = :redis_cache_store, {
     url: ENV.fetch("REDIS_URL", "redis://127.0.0.1:6379/0"),
-    password: ENV.fetch("REDIS_PASSWORD", nil),
     pool: { size: 5, timeout: 5 }
   }
 
@@ -91,4 +90,6 @@ Rails.application.configure do
   # ]
   # Skip DNS rebinding protection for the default health check endpoint.
   # config.host_authorization = { exclude: ->(request) { request.path == "/up" } }
+
+  config.secret_key_base = ENV.fetch("SECRET_KEY_BASE")
 end

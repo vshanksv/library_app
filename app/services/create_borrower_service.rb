@@ -14,6 +14,7 @@ class CreateBorrowerService
     if user.save
       success(user)
     else
+      Rails.logger.error(user.errors.full_messages.join(", "))
       failure(user.errors.full_messages.join(", "))
     end
   end
